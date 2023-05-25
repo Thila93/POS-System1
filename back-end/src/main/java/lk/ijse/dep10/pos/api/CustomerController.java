@@ -39,7 +39,7 @@ public class CustomerController {
             customer.setId(id);
             return new ResponseEntity<>(customer, HttpStatus.CREATED);
         } catch (SQLException e) {
-            if (e.getSQLState().equals("23000")){
+            if (e.getSQLState().equals("23")){
                 return new ResponseEntity<>(
                         new ResponseErrorDTO(HttpStatus.CONFLICT.value(),e.getMessage()),
                         HttpStatus.CONFLICT);
