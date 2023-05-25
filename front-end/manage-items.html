@@ -144,34 +144,30 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5">Add New Customer</h1>
+                <h1 class="modal-title fs-5">Add New Item</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
+
                 <div class="mb-3">
-                    <label for="txt-id" class="form-label">Customer ID</label>
-                    <input type="text" class="form-control text-center" id="txt-id" placeholder="Generated ID"
-                           disabled>
+                    <label for="txt-name" class="form-label">Item Description</label>
+                    <input type="text" class="form-control text-center" id="txt-name" placeholder="Coca-Cola">
+                    <div class="invalid-feedback">
+
                 </div>
                 <div class="mb-3">
-                    <label for="txt-name" class="form-label">Customer Name</label>
-                    <input type="text" class="form-control text-center" id="txt-name" placeholder="Eg. Kasun Sampath">
+                    <label for="txt-contact" class="form-label">Unit Price</label>
+                    <input type="text" class="form-control text-center" id="txt-contact" placeholder="Rs.350.00">
                     <div class="invalid-feedback">
-                        Name can't be empty
+                        Price can't be empty
+                    </div>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="txt-contact" class="form-label">Customer Contact</label>
-                    <input type="text" class="form-control text-center" id="txt-contact" placeholder="Eg. 077-1234567">
+                    <label for="txt-address" class="form-label">Initial Stock</label>
+                    <input type="text" class="form-control text-center" id="txt-address" placeholder="XXXX">
                     <div class="invalid-feedback">
-                        Contact can't be empty
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="txt-address" class="form-label">Customer Address</label>
-                    <input type="text" class="form-control text-center" id="txt-address" placeholder="Eg. #501/A, Grace Peries Road, Panadura">
-                    <div class="invalid-feedback">
-                        Address can't be empty
+                        Stock can't be empty
                     </div>
                 </div>
             </div>
