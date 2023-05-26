@@ -1,6 +1,7 @@
 package lk.ijse.dep10.pos.api;
 
-import lk.ijse.dep10.pos.dto.CustomerDTO;
+import lk.ijse.dep10.pos.dto.ItemDTO;
+import lk.ijse.dep10.pos.dto.ItemDTO;
 import lk.ijse.dep10.pos.dto.ResponseErrorDTO;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.*;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/items")
 @CrossOrigin
-public class CustomerController {
+public class ItemController {
 
     @Autowired
     private BasicDataSource pool;
 
     @PostMapping
-    public ResponseEntity<?> saveCustomer(@RequestBody CustomerDTO customer){
+    public ResponseEntity<?> saveItems(@RequestBody ItemDTO item){
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -27,19 +28,19 @@ public class CustomerController {
         }
         try (Connection connection = pool.getConnection()) {
             PreparedStatement stm = connection.prepareStatement
-                    ("INSERT INTO customer (name, address, contact) VALUES (?,?,?)",
+                    ("INSERT INTO item (description, price, stock) VALUES (?,?,?)",
                             Statement.RETURN_GENERATED_KEYS);
-            stm.setString(1, customer.getName());
-            stm.setString(2, customer.getAddress());
-            stm.setString(3, customer.getContact());
+            stm.setString(1, item.getDescription());
+            stm.setString(2, item.getPrice());
+            stm.setString(3, item.getStock());
             stm.executeUpdate();
             ResultSet generatedKeys = stm.getGeneratedKeys();
             generatedKeys.next();
-            int id = generatedKeys.getInt(1);
-            customer.setId(id);
-            return new ResponseEntity<>(customer, HttpStatus.CREATED);
+            int code = generatedKeys.getInt(1);
+            item.setCode(code);
+            return new ResponseEntity<>(item, HttpStatus.CREATED);
         } catch (SQLException e) {
-            if (e.getSQLState().equals("23000")){
+            if (e.getSQLState().equals("23")){
                 return new ResponseEntity<>(
                         new ResponseErrorDTO(HttpStatus.CONFLICT.value(),e.getMessage()),
                         HttpStatus.CONFLICT);

@@ -7,3 +7,4 @@ CREATE TABLE IF NOT EXISTS customer
 );
 
 ALTER TABLE customer ADD CONSTRAINT uk_contact UNIQUE (contact);
+

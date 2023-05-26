@@ -11,7 +11,7 @@ public class WebRootConfig {
     public BasicDataSource dataSource(){
         BasicDataSource bds = new BasicDataSource();
         bds.setUsername("root");
-        bds.setPassword("mysql");
+        bds.setPassword("Thilanka@524");
         bds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         bds.setUrl("jdbc:mysql://localhost:3306/dep10_pos?createDatabaseIfNotExist=true");
         bds.setMaxTotal(50);
